@@ -36,7 +36,7 @@ const usuariosPost = async (req, res = response) => {
    });
 };
 
-const usuariosPut = async (req, res = response) => {
+const usuariosPut = async (req = request, res = response) => {
    const { id } = req.params;
    const { _id, password, google, correo, ...resto } = req.body;
 
@@ -59,7 +59,7 @@ const usuariosPatch = (req, res = response) => {
    });
 };
 
-const usuariosDelete = async (req, res = response) => {
+const usuariosDelete = async (req = request, res = response) => {
    const { id } = req.params;
    const query = { estado: false };
 
@@ -68,8 +68,9 @@ const usuariosDelete = async (req, res = response) => {
 
    // Borrado cambiando el estado del usuario
    const usuario = await Usuario.findByIdAndUpdate(id, query);
+   const usuarioAutenticado = req.usuario;
 
-   res.json(usuario);
+   res.json({ usuario, usuarioAutenticado });
 };
 
 module.exports = {
