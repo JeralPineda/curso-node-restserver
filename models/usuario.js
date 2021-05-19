@@ -12,7 +12,7 @@ const UsuarioSchema = Schema({
    },
    password: {
       type: String,
-      required: [true, 'La contraseña es obligatoria'],
+      required: [this.google === false, 'La contraseña es requerida.'],
    },
    img: {
       type: String,
@@ -20,6 +20,7 @@ const UsuarioSchema = Schema({
    rol: {
       type: String,
       required: true,
+      default: 'USER_ROLE',
       emun: ['ADMIN_ROLE', 'USER_ROLE'],
    },
    estado: {
