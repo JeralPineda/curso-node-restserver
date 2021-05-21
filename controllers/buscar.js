@@ -55,7 +55,7 @@ const buscarProductos = async (termino = '', res = response) => {
 
    if (esMongoID) {
       //    Búsqueda por id
-      const producto = await (await Producto.findById(termino)).populate('categoria', 'nombre');
+      const producto = await Producto.findById(termino).populate('categoria', 'nombre');
 
       return res.json({
          results: producto ? [producto] : [],
