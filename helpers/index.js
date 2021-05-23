@@ -1,7 +1,7 @@
-const dbValidators = require('./helpers/db-validators');
-const generarJWT = require('./helpers/generar-jwt');
-const googleVerify = require('./helpers/google-verify');
-const subirArchivo = require('./helpers/subir-archivo');
+const dbValidators = require('./db-validators');
+const generarJWT = require('./generar-jwt');
+const googleVerify = require('./google-verify');
+const subirArchivo = require('./subir-archivo');
 
 module.exports = {
    ...dbValidators,
