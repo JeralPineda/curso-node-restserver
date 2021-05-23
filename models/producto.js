@@ -32,6 +32,9 @@ const ProductoSchema = Schema({
       type: Boolean,
       default: true,
    },
+   img: {
+      type: String,
+   },
 });
 
 // Limitamos la información de la petición a mostrar
