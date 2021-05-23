@@ -1,4 +1,5 @@
 const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 const { response } = require('express');
 
 const cargarArchivo = (req, res = response) => {
@@ -26,8 +27,11 @@ const cargarArchivo = (req, res = response) => {
       });
    }
 
+   //    Cambiar el nombre del archivo
+   const nombreTemp = uuidv4() + '.' + extension;
+
    //    Cargar archivos
-   const uploadPath = path.join(__dirname, '../uploads/', archivo.name);
+   const uploadPath = path.join(__dirname, '../uploads/', nombreTemp);
 
    archivo.mv(uploadPath, (err) => {
       if (err) {
