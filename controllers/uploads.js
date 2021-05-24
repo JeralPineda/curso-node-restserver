@@ -121,7 +121,14 @@ const actualizarImagenCloudinary = async (req, res = response) => {
 
    // Limpiar imágenes previas antes de guardar la nueva
    if (modelo.img) {
-      // TODO:
+      // extraemos y cortamos la extension del id de la url de la imagen
+      const nombreArr = modelo.img.split('/');
+      const nombre = nombreArr[nombreArr.length - 1]; //obtener la ultima posición
+
+      const [public_id] = nombre.split('.');
+
+      // Borramos de cloudinary
+      cloudinary.uploader.destroy(public_id);
    }
 
    //    Extraemos el path del archivo, loudinary
