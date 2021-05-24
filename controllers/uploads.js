@@ -35,7 +35,9 @@ const actualizarImagen = async (req, res = response) => {
                msg: `No existe un usuario con el id: ${id}`,
             });
          }
+
          break;
+
       case 'productos':
          //   Verificamos que el id exista en la BD
          modelo = await Producto.findById(id);
@@ -45,6 +47,7 @@ const actualizarImagen = async (req, res = response) => {
                msg: `No existe un producto con el id: ${id}`,
             });
          }
+
          break;
 
       default:
@@ -90,6 +93,7 @@ const mostrarImagen = async (req, res = response) => {
                msg: `No existe un usuario con el id: ${id}`,
             });
          }
+
          break;
 
       case 'productos':
@@ -101,6 +105,7 @@ const mostrarImagen = async (req, res = response) => {
                msg: `No existe un producto con el id: ${id}`,
             });
          }
+
          break;
 
       default:
@@ -122,9 +127,8 @@ const mostrarImagen = async (req, res = response) => {
    }
 
    //  Si no existe una imagen en el servidor, mandamos una imagen por defecto
-   res.json({
-      msg: 'falta place holder',
-   });
+   const pathImgDefault = path.join(__dirname, '../assets/no-image.jpg');
+   res.sendFile(pathImgDefault);
 };
 
 module.exports = {
